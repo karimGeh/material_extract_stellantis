@@ -1,2 +1,5 @@
 .venv
 .env
+cred
+**/__pycache__
+resources
