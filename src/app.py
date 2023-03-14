@@ -8,6 +8,7 @@ from datetime import datetime
 import csv
 import jsons
 from src.models.reservation import Reservation
+from datetime import timedelta
 
 
 class App:
@@ -71,14 +72,15 @@ class App:
               "should've been returned at",
               "booked by",
               "ref materiel",
-              # "status"
+              "status"
           ])
 
     # now = datetime.now().timestamp()
-      now = datetime.utcnow()
+      now = datetime.utcnow() + timedelta(days=int(input("How many days in advance? ")))
       for key, reservations in self.reservationByMaterial.items():
         reservations = [*sorted(reservations, key=lambda x: x.dateFin)]
         reservation = reservations[-1]
+      # for reservation in reservations:
         endDate = datetime.fromisoformat(
             reservation.dateFin.__str__()
         ).timestamp()
@@ -89,6 +91,7 @@ class App:
               reservation.dateFin,
               reservation.nomValideur,
               reservation.refMateriel,
+              reservation.restitue
               # "late"
           ])
 

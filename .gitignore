@@ -3,3 +3,5 @@
 cred
 **/__pycache__
 resources
+extract.csv
+extract.xlsx
